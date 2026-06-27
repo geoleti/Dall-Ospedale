@@ -22,6 +22,119 @@ const family = [
   }
 ];
 
+const genealogyRoot = {
+  name: 'Pietro Luigi Giuseppe Dall’Ospedale',
+  nickname: 'Luiggi / Luis',
+  status: 'Confirmado por acta',
+  photo: '',
+  birth: '11/03/1874 · Casalmaggiore, Cremona, Italia',
+  lived: 'Casalmaggiore y Buenos Aires',
+  partner: 'Tomasa Rodríguez',
+  notes: 'Padre de 8 hijos: 7 varones y 1 mujer. Se inicia la reconstrucción de todas las ramas.',
+  children: [
+    {
+      name: 'Luis Vicente Dall’Ospedale',
+      nickname: 'Sobrenombre a completar',
+      status: 'Rama iniciada',
+      photo: '',
+      birth: '07/06/1907 · Capital Federal',
+      lived: 'Buenos Aires / Lomas de Zamora',
+      partner: 'Carmen Lucía Hermida',
+      notes: 'Abuelo de Leti. Rama con documentación de nacimiento, matrimonio y defunción.',
+      children: [
+        {
+          name: 'Héctor Dall’Ospedale',
+          nickname: 'Sobrenombre a completar',
+          status: 'Rama iniciada',
+          photo: '',
+          birth: '14/11/1943 · Avellaneda',
+          lived: 'Dato a completar',
+          partner: 'Dato a completar',
+          notes: 'Rama actual a ampliar con hijos, nietos, fotos y lugares de residencia.',
+          children: []
+        }
+      ]
+    },
+    {
+      name: 'Hijo varón a identificar 1',
+      nickname: 'Dato faltante',
+      status: 'A reconstruir',
+      photo: '',
+      birth: 'Dato faltante',
+      lived: 'Dato faltante',
+      partner: 'Dato faltante',
+      notes: 'Falta nombre, pareja, hijos, fechas y rama descendiente.',
+      children: []
+    },
+    {
+      name: 'Hijo varón a identificar 2',
+      nickname: 'Dato faltante',
+      status: 'A reconstruir',
+      photo: '',
+      birth: 'Dato faltante',
+      lived: 'Dato faltante',
+      partner: 'Dato faltante',
+      notes: 'Falta nombre, pareja, hijos, fechas y rama descendiente.',
+      children: []
+    },
+    {
+      name: 'Hijo varón a identificar 3',
+      nickname: 'Dato faltante',
+      status: 'A reconstruir',
+      photo: '',
+      birth: 'Dato faltante',
+      lived: 'Dato faltante',
+      partner: 'Dato faltante',
+      notes: 'Falta nombre, pareja, hijos, fechas y rama descendiente.',
+      children: []
+    },
+    {
+      name: 'Hijo varón a identificar 4',
+      nickname: 'Dato faltante',
+      status: 'A reconstruir',
+      photo: '',
+      birth: 'Dato faltante',
+      lived: 'Dato faltante',
+      partner: 'Dato faltante',
+      notes: 'Falta nombre, pareja, hijos, fechas y rama descendiente.',
+      children: []
+    },
+    {
+      name: 'Hijo varón a identificar 5',
+      nickname: 'Dato faltante',
+      status: 'A reconstruir',
+      photo: '',
+      birth: 'Dato faltante',
+      lived: 'Dato faltante',
+      partner: 'Dato faltante',
+      notes: 'Falta nombre, pareja, hijos, fechas y rama descendiente.',
+      children: []
+    },
+    {
+      name: 'Hijo varón a identificar 6',
+      nickname: 'Dato faltante',
+      status: 'A reconstruir',
+      photo: '',
+      birth: 'Dato faltante',
+      lived: 'Dato faltante',
+      partner: 'Dato faltante',
+      notes: 'Falta nombre, pareja, hijos, fechas y rama descendiente.',
+      children: []
+    },
+    {
+      name: 'Hija a identificar',
+      nickname: 'Dato faltante',
+      status: 'A reconstruir',
+      photo: '',
+      birth: 'Dato faltante',
+      lived: 'Dato faltante',
+      partner: 'Dato faltante',
+      notes: 'Falta nombre, pareja, hijos, fechas y rama descendiente.',
+      children: []
+    }
+  ]
+};
+
 const timeline = [
   {
     year: '1874',
@@ -155,6 +268,7 @@ const documents = [
 ];
 
 const familyTree = document.querySelector('#familyTree');
+const genealogyTree = document.querySelector('#genealogyTree');
 const timelineContainer = document.querySelector('#timeline');
 const documentGrid = document.querySelector('#documentGrid');
 const menuButton = document.querySelector('#menuButton');
@@ -166,6 +280,41 @@ const closeViewer = document.querySelector('#closeViewer');
 
 function encodePath(path) {
   return path.split('/').map((part, index) => index === 0 ? part : encodeURIComponent(part)).join('/');
+}
+
+function getInitials(name) {
+  return name
+    .replace(/a identificar \d?|Dato faltante|Sobrenombre a completar/g, '')
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map(part => part[0])
+    .join('')
+    .toUpperCase() || '?';
+}
+
+function createInfoMailto(person) {
+  const subject = `Datos para el árbol Dall'Ospedale - ${person.name}`;
+  const body = [
+    'Hola Leti,',
+    '',
+    `Te envío datos para completar o corregir la ficha de: ${person.name}.`,
+    '',
+    'Nombre completo:',
+    'Sobrenombre:',
+    'Fecha y lugar de nacimiento:',
+    'Pareja/cónyuge:',
+    'Hijos/hijas:',
+    'Lugares donde vivió:',
+    'Oficio o actividad:',
+    'Recuerdos o datos familiares:',
+    'Fuente del dato o quién lo recuerda:',
+    'Datos a corregir en la página:',
+    '',
+    'Adjunto foto o documento si lo tengo.'
+  ].join('\n');
+
+  return `mailto:daetye@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
 function renderFamilyTree() {
@@ -180,6 +329,56 @@ function renderFamilyTree() {
       </dl>
     </article>
   `).join('');
+}
+
+function renderGenealogyCard(person, options = {}) {
+  const photo = person.photo
+    ? `<img src="${encodePath(person.photo)}" alt="Foto de ${person.name}" loading="lazy" />`
+    : `<span>${getInitials(person.name)}</span>`;
+
+  return `
+    <article class="genealogy-card ${options.main ? 'is-main' : ''}">
+      <div class="genealogy-photo">${photo}</div>
+      <div>
+        <span class="genealogy-status">${person.status}</span>
+        <h3>${person.name}</h3>
+        <p class="genealogy-nickname">${person.nickname}</p>
+        <ul class="genealogy-data">
+          <li><strong>Nacimiento:</strong> ${person.birth}</li>
+          <li><strong>Pareja:</strong> ${person.partner}</li>
+          <li><strong>Vivió en:</strong> ${person.lived}</li>
+          <li><strong>Notas:</strong> ${person.notes}</li>
+        </ul>
+        <a class="info-link" href="${createInfoMailto(person)}" target="_blank" rel="noopener noreferrer">Enviar dato o foto</a>
+      </div>
+    </article>
+  `;
+}
+
+function renderGenealogyBranch(person) {
+  const descendants = person.children && person.children.length
+    ? `<div class="genealogy-descendants">${person.children.map(child => renderGenealogyCard(child)).join('')}</div>`
+    : '';
+
+  return `
+    <div class="genealogy-branch">
+      ${renderGenealogyCard(person)}
+      ${descendants}
+    </div>
+  `;
+}
+
+function renderGenealogyTree() {
+  if (!genealogyTree) return;
+
+  genealogyTree.innerHTML = `
+    <div class="genealogy-root">
+      ${renderGenealogyCard(genealogyRoot, { main: true })}
+    </div>
+    <div class="genealogy-branches">
+      ${genealogyRoot.children.map(renderGenealogyBranch).join('')}
+    </div>
+  `;
 }
 
 function renderTimeline(filter = 'todos') {
@@ -271,6 +470,7 @@ function setupEvents() {
 }
 
 renderFamilyTree();
+renderGenealogyTree();
 renderTimeline();
 renderDocuments();
 setupEvents();
