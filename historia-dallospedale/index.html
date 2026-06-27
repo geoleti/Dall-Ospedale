@@ -14,7 +14,8 @@
       gap: 18px;
     }
 
-    .map-link {
+    .map-link,
+    .info-link {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -31,10 +32,255 @@
     }
 
     .map-link:hover,
-    .map-link:focus-visible {
+    .map-link:focus-visible,
+    .info-link:hover,
+    .info-link:focus-visible {
       background: #5d321d;
       color: #fffaf3;
       outline: none;
+    }
+
+    .section--tree {
+      width: 100%;
+      max-width: none;
+      padding: 86px max(20px, calc((100% - 1180px) / 2));
+      background: linear-gradient(180deg, rgba(255, 250, 243, 0.86), rgba(238, 221, 204, 0.72));
+      border-top: 1px solid rgba(76, 55, 39, 0.18);
+      border-bottom: 1px solid rgba(76, 55, 39, 0.18);
+    }
+
+    .genealogy-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: -14px 0 28px;
+    }
+
+    .genealogy-tree-wrap {
+      overflow-x: auto;
+      padding: 12px 0 24px;
+    }
+
+    .genealogy-tree {
+      min-width: 1060px;
+      display: grid;
+      gap: 30px;
+      justify-items: center;
+      position: relative;
+    }
+
+    .genealogy-root {
+      width: min(560px, 100%);
+      position: relative;
+    }
+
+    .genealogy-root::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -30px;
+      width: 4px;
+      height: 30px;
+      background: #8b4e2f;
+      transform: translateX(-50%);
+      border-radius: 999px;
+    }
+
+    .genealogy-branches {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(8, minmax(116px, 1fr));
+      gap: 14px;
+      position: relative;
+      padding-top: 30px;
+    }
+
+    .genealogy-branches::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 6%;
+      right: 6%;
+      height: 4px;
+      background: #8b4e2f;
+      border-radius: 999px;
+    }
+
+    .genealogy-branch {
+      display: grid;
+      gap: 16px;
+      justify-items: center;
+      position: relative;
+    }
+
+    .genealogy-branch::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      width: 3px;
+      height: 30px;
+      background: #8b4e2f;
+      transform: translateX(-50%);
+      border-radius: 999px;
+    }
+
+    .genealogy-card {
+      width: 100%;
+      min-height: 100%;
+      background: rgba(255, 250, 243, 0.96);
+      border: 1px solid rgba(76, 55, 39, 0.18);
+      border-radius: 20px;
+      padding: 14px;
+      box-shadow: 0 14px 36px rgba(56, 37, 21, 0.12);
+    }
+
+    .genealogy-card.is-main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .genealogy-photo {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: linear-gradient(135deg, #8b4e2f, #d7a073);
+      color: #fffaf3;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 1.2rem;
+      border: 4px solid #fffaf3;
+      box-shadow: 0 10px 28px rgba(56, 37, 21, 0.16);
+      margin-bottom: 12px;
+    }
+
+    .genealogy-card.is-main .genealogy-photo {
+      width: 92px;
+      height: 92px;
+      margin-bottom: 0;
+    }
+
+    .genealogy-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .genealogy-status {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 9px;
+      margin-bottom: 8px;
+      background: rgba(139, 78, 47, 0.12);
+      color: #5d321d;
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .genealogy-card h3 {
+      margin: 0;
+      color: #5d321d;
+      font-size: 1rem;
+    }
+
+    .genealogy-card.is-main h3 {
+      font-size: 1.42rem;
+    }
+
+    .genealogy-nickname {
+      margin: 4px 0 0;
+      color: #8b4e2f;
+      font-weight: 800;
+      font-size: 0.86rem;
+    }
+
+    .genealogy-data {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 6px;
+      color: #74665b;
+      font-size: 0.82rem;
+    }
+
+    .genealogy-data strong {
+      color: #5d321d;
+    }
+
+    .genealogy-card .info-link {
+      width: 100%;
+      min-height: 36px;
+      padding: 8px 10px;
+      margin-top: 12px;
+      font-size: 0.78rem;
+      box-shadow: none;
+      white-space: normal;
+      text-align: center;
+    }
+
+    .genealogy-descendants {
+      width: 100%;
+      display: grid;
+      gap: 12px;
+      position: relative;
+      padding-top: 14px;
+    }
+
+    .genealogy-descendants::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 3px;
+      height: 14px;
+      transform: translateX(-50%);
+      background: rgba(139, 78, 47, 0.55);
+      border-radius: 999px;
+    }
+
+    .research-fields {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 20px;
+    }
+
+    .field-card {
+      background: rgba(255, 250, 243, 0.92);
+      border: 1px solid rgba(76, 55, 39, 0.18);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 14px 36px rgba(56, 37, 21, 0.10);
+    }
+
+    .field-card h3 {
+      color: #5d321d;
+      margin: 0 0 12px;
+    }
+
+    .field-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #74665b;
+    }
+
+    @media (max-width: 980px) {
+      .genealogy-tree {
+        min-width: 980px;
+      }
+
+      .research-fields {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 760px) {
@@ -43,7 +289,8 @@
         flex-direction: column;
       }
 
-      .map-link {
+      .map-link,
+      .info-link {
         white-space: normal;
       }
     }
@@ -58,6 +305,7 @@
       <div class="navlinks" id="mainNav">
         <a href="#origen">Origen</a>
         <a href="#arbol">Árbol familiar</a>
+        <a href="#arbol-genealogico">Árbol ampliado</a>
         <a href="#linea-tiempo">Línea de tiempo</a>
         <a href="#documentos">Documentos</a>
         <a href="#pendientes">A revisar</a>
@@ -115,6 +363,46 @@
         <h2>Árbol familiar básico</h2>
       </div>
       <div class="tree" id="familyTree"></div>
+    </section>
+
+    <section class="section section--tree" id="arbol-genealogico">
+      <div class="section__heading">
+        <p class="eyebrow">Ramas familiares</p>
+        <h2>Árbol genealógico Dall’Ospedale</h2>
+        <p class="section__summary">
+          Estructura inicial para reconstruir las ocho ramas descendientes de Luiggi/Pietro Luigi Giuseppe Dall’Ospedale
+          y Tomasa Rodríguez. La rama de Luis Vicente queda iniciada y las demás se dejan marcadas como datos a completar.
+        </p>
+      </div>
+      <div class="genealogy-actions">
+        <a class="info-link" href="mailto:daetye@gmail.com?subject=Datos%20para%20el%20%C3%A1rbol%20Dall%27Ospedale&body=Hola%20Leti%2C%0A%0ATe%20env%C3%ADo%20datos%20para%20el%20%C3%A1rbol%20familiar%20Dall%27Ospedale.%0A%0ANombre%20completo%3A%0ASobrenombre%3A%0AFecha%20y%20lugar%20de%20nacimiento%3A%0APareja%2Fc%C3%B3nyuge%3A%0AHijos%2Fhijas%3A%0ALugares%20donde%20vivi%C3%B3%3A%0AOficio%20o%20actividad%3A%0ARecuerdos%20o%20datos%20familiares%3A%0ADatos%20a%20corregir%20en%20la%20p%C3%A1gina%3A%0A%0AAdjunto%20foto%20o%20documento%20si%20lo%20tengo.%0A" target="_blank" rel="noopener noreferrer">
+          Enviar datos o fotos faltantes
+        </a>
+      </div>
+      <div class="genealogy-tree-wrap" aria-label="Árbol genealógico ampliado con desplazamiento horizontal">
+        <div class="genealogy-tree" id="genealogyTree"></div>
+      </div>
+      <div class="research-fields">
+        <article class="field-card">
+          <h3>Datos útiles por persona</h3>
+          <ul>
+            <li>Nombre completo, sobrenombre y variantes del apellido.</li>
+            <li>Fecha y lugar de nacimiento, matrimonio y fallecimiento.</li>
+            <li>Pareja o parejas, hijos e hijas.</li>
+            <li>Lugares donde vivió y migraciones familiares.</li>
+            <li>Oficio, actividad, anécdotas y fotos.</li>
+          </ul>
+        </article>
+        <article class="field-card">
+          <h3>Control documental</h3>
+          <ul>
+            <li>Fuente del dato: acta, foto, documento, relato oral o familiar que lo aporta.</li>
+            <li>Estado: confirmado, a verificar, incompleto o corregido.</li>
+            <li>Ubicación del documento dentro del repositorio.</li>
+            <li>Notas de privacidad para personas vivas cuando corresponda.</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
     <section class="section section--soft" id="linea-tiempo">
