@@ -6,6 +6,48 @@
   <title>Historia familiar Dall’Ospedale</title>
   <meta name="description" content="Historia familiar Dall’Ospedale: de Casalmaggiore a Buenos Aires, reconstruida a partir de actas civiles y registros migratorios." />
   <link rel="stylesheet" href="css/historia-dallospedale.css" />
+  <style>
+    .section__heading--with-action {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(93, 50, 29, 0.25);
+      background: #fffaf3;
+      color: #5d321d;
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 10px 28px rgba(56, 37, 21, 0.10);
+      white-space: nowrap;
+    }
+
+    .map-link:hover,
+    .map-link:focus-visible {
+      background: #5d321d;
+      color: #fffaf3;
+      outline: none;
+    }
+
+    @media (max-width: 760px) {
+      .section__heading--with-action {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .map-link {
+        white-space: normal;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="hero" id="inicio">
@@ -110,9 +152,9 @@
         <article class="card">
           <h3>Registros migratorios de 1890 y 1914</h3>
           <p>
-            Ambas constancias del AGN están a nombre de Giuseppe Dall’Ospedale, pero las edades transcriptas
-            no coinciden directamente con Pietro Luigi Giuseppe nacido en 1874. Conviene revisar las imágenes
-            originales o tratarlas como posibles coincidencias hasta confirmar que corresponden a la misma persona.
+            Según el acta de nacimiento, Pietro Luigi Giuseppe nació el 11 de marzo de 1874. Por eso,
+            al 3 de septiembre de 1890 debía tener 16 años, no 26; y al 10 de octubre de 1914 debía
+            tener 40 años, no 27. Por ahora, ninguno de los dos registros migratorios coincide con la edad real.
           </p>
         </article>
         <article class="card">
