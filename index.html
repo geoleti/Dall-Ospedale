@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Historia familiar Dall’Ospedale</title>
+  <meta name="description" content="Historia familiar Dall’Ospedale: de Casalmaggiore a Buenos Aires, reconstruida a partir de actas civiles y registros migratorios." />
+  <link rel="stylesheet" href="css/historia-dallospedale.css" />
+</head>
+<body>
+  <header class="hero" id="inicio">
+    <div class="hero__overlay"></div>
+    <nav class="topbar" aria-label="Navegación principal">
+      <a href="#inicio" class="brand">Dall’Ospedale</a>
+      <button class="menu-button" id="menuButton" aria-expanded="false" aria-controls="mainNav">Menú</button>
+      <div class="navlinks" id="mainNav">
+        <a href="#origen">Origen</a>
+        <a href="#arbol">Árbol familiar</a>
+        <a href="#linea-tiempo">Línea de tiempo</a>
+        <a href="#documentos">Documentos</a>
+        <a href="#pendientes">A revisar</a>
+      </div>
+    </nav>
+
+    <section class="hero__content">
+      <p class="eyebrow">Historia familiar documentada</p>
+      <h1>De Casalmaggiore a Buenos Aires</h1>
+      <p class="lead">
+        Una reconstrucción inicial del recorrido de la familia Dall’Ospedale,
+        a partir de actas de nacimiento, matrimonio, defunción y constancias migratorias.
+      </p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#linea-tiempo">Ver la historia</a>
+        <a class="button button--ghost" href="#documentos">Abrir documentos</a>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="section intro" id="origen">
+      <div class="section__heading">
+        <p class="eyebrow">El punto de partida</p>
+        <h2>Casalmaggiore, provincia de Cremona</h2>
+      </div>
+      <div class="intro__grid">
+        <article class="card card--featured">
+          <h3>Pietro Luigi Giuseppe Dall’Ospedale</h3>
+          <p>
+            La línea familiar documentada comienza en Casalmaggiore, donde nació Pietro Luigi Giuseppe
+            Dall’Ospedale el 11 de marzo de 1874. En los documentos argentinos aparece también la forma
+            “Luis” o “Luis Dall’Ospedale”, una castellanización frecuente en las actas civiles.
+          </p>
+        </article>
+        <aside class="note">
+          <strong>Lectura documental</strong>
+          <p>
+            En esta página se distinguen los datos confirmados por actas de los datos que todavía conviene
+            verificar, especialmente los registros migratorios donde la edad transcripta no siempre coincide
+            con la fecha de nacimiento conocida.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="arbol">
+      <div class="section__heading">
+        <p class="eyebrow">Tres generaciones</p>
+        <h2>Árbol familiar básico</h2>
+      </div>
+      <div class="tree" id="familyTree"></div>
+    </section>
+
+    <section class="section section--soft" id="linea-tiempo">
+      <div class="section__heading">
+        <p class="eyebrow">Cronología</p>
+        <h2>Línea de tiempo familiar</h2>
+      </div>
+      <div class="filters" aria-label="Filtros de línea de tiempo">
+        <button class="chip is-active" data-filter="todos">Todos</button>
+        <button class="chip" data-filter="pietro">Pietro / Luis</button>
+        <button class="chip" data-filter="luis">Luis Vicente</button>
+        <button class="chip" data-filter="hector">Héctor</button>
+      </div>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <section class="section" id="documentos">
+      <div class="section__heading">
+        <p class="eyebrow">Archivo digital</p>
+        <h2>Documentos disponibles</h2>
+        <p class="section__summary">
+          Galería de documentos guardados en la carpeta <code>documentos</code> del repositorio.
+          Los PDF se abren en una pestaña nueva y las imágenes se visualizan en la página.
+        </p>
+      </div>
+      <div class="doc-grid" id="documentGrid"></div>
+    </section>
+
+    <section class="section section--soft" id="pendientes">
+      <div class="section__heading">
+        <p class="eyebrow">Notas de investigación</p>
+        <h2>Datos a revisar o completar</h2>
+      </div>
+      <div class="pending-grid">
+        <article class="card">
+          <h3>Registros migratorios de 1890 y 1914</h3>
+          <p>
+            Ambas constancias del AGN están a nombre de Giuseppe Dall’Ospedale, pero las edades transcriptas
+            no coinciden directamente con Pietro Luigi Giuseppe nacido en 1874. Conviene revisar las imágenes
+            originales o tratarlas como posibles coincidencias hasta confirmar que corresponden a la misma persona.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Variantes del nombre</h3>
+          <p>
+            En los documentos aparecen variantes como Pietro Luigi Giuseppe, Luis, Luis Vicente, Dall’Ospedale
+            y Dall Ospedale. La página conserva las variantes originales y permite explicar cada una.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Próximos agregados</h3>
+          <p>
+            Se puede ampliar la historia con fotografías familiares, mapas del recorrido Italia–Argentina,
+            transcripciones completas de las actas y una rama dedicada a la familia Hermida–González.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Historia familiar Dall’Ospedale · Archivo documental familiar</p>
+    <a href="#inicio">Volver arriba</a>
+  </footer>
+
+  <dialog class="viewer" id="viewer">
+    <button class="viewer__close" id="closeViewer" aria-label="Cerrar">×</button>
+    <img id="viewerImage" alt="" />
+    <p id="viewerCaption"></p>
+  </dialog>
+
+  <script src="js/historia-dallospedale.js"></script>
+</body>
+</html>
